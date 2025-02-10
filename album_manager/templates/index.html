@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title  %}Pagina Inicial{% endblock title  %}
+{% block content %}
+    <p></p>
+    <a class="btn btn-primary">Añadir Album</a>
+    <a class="btn btn-primary">Añadir Artista</a>
+    
+    <h3>Album</h3>
+    <div class="row">
+        {% for album in albums %}
+        <div class="col-sm-4">
+            <div class="card" style="width: 100%;">
+            <img class="card-img-top" src="{{ album.cover.url }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ album.title | capfirst }}</h5>
+                <p class="card-text">Año: {{ album.realase_year }}</p>
+                <a href="{{album.pk}}" class="btn btn-primary">
+                    <i class="fa-solid fa-eye"></i>
+                </a>
+                    <a href="edit_album/{{album.pk}}" class="btn btn-primary">
+                        <i class="fa-solid fa-pencil"></i>
+                    </a>
+                    <a href="delete_album/{{album.pk}}" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <hr></hr>
+    
+{% endblock content %}
